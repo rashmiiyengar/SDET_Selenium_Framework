@@ -80,11 +80,11 @@
           <!--System property variables used to override default properties-->
           <systemPropertyVariables>
 <!--            <browser>chrome</browser>-->
-            <selenium.grid.enabled>true</selenium.grid.enabled>
+<!--            <selenium.grid.enabled>true</selenium.grid.enabled>-->
           </systemPropertyVariables>
           <suiteXmlFiles>
-            <file>src/test/resources/test-suites/vendor-portol.xml</file>
-<!--            <file>src/test/resources/test-suites/flight-reservation.xml</file>-->
+<!--            <file>src/test/resources/test-suites/vendor-portol.xml</file>-->
+            <file>src/test/resources/test-suites/flight-reservation.xml</file>
           </suiteXmlFiles>
           <threadCount>1</threadCount>
           <reportsDirectory>target/test-output</reportsDirectory>
@@ -116,13 +116,16 @@
         <artifactId>maven-jar-plugin</artifactId>
         <version>${maven.jar.version}</version>
         <configuration>
-          <outputDirectory>${package.directory}</outputDirectory>
+          <outputDirectory>${package.directory}/libs</outputDirectory>
         </configuration>
         <executions>
           <execution>
             <goals>
               <goal>test-jar</goal>
             </goals>
+            <configuration>
+              <includes>**/*.class</includes>
+            </configuration>
           </execution>
         </executions>
       </plugin>
