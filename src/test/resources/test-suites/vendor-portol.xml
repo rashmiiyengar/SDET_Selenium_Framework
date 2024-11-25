@@ -2,21 +2,18 @@
 <suite name="vendor-portal" parallel="tests" thread-count="3">
     <test name="user-sam">
         <parameter name="testDataPath" value="test-data/vendor-portal/sam.json" />
-        <parameter name="browser" value="firefox"/>
         <classes>
             <class name="com.rash.tests.vendorportal.VendorPortalTest"/>
         </classes>
     </test>
     <test name="user-mike">
         <parameter name="testDataPath" value="test-data/vendor-portal/mike.json" />
-        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.rash.tests.vendorportal.VendorPortalTest"/>
         </classes>
     </test>
     <test name="user-john">
         <parameter name="testDataPath" value="test-data/vendor-portal/john.json" />
-        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.rash.tests.vendorportal.VendorPortalTest"/>
         </classes>

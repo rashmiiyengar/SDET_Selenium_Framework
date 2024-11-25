@@ -1,5 +1,6 @@
 package com.rash.tests;
 
+import com.rash.tests.listeners.TestListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
@@ -7,16 +8,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
 import util.ConfigUtil;
 import util.Constants;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
+@Listeners({TestListener.class})
 public abstract class AbstractTest {
 
     protected WebDriver driver;
@@ -26,11 +26,10 @@ public abstract class AbstractTest {
         ConfigUtil.initialize();
     }
 
-
     @BeforeTest
-    @Parameters({"browser"})
-    public void setDriver(String browser) throws MalformedURLException {
+    public void setDriver(ITestContext context) throws MalformedURLException {
      this.driver=  Boolean.parseBoolean(ConfigUtil.get(Constants.GRID_ENABLED)) ? getRemoteDriver() : getLocalDriver();
+     context.setAttribute(Constants.DRIVER,this.driver);
     }
 
     private WebDriver getRemoteDriver() throws MalformedURLException {

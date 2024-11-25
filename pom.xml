@@ -77,12 +77,14 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.version}</version>
         <configuration>
+          <!--System property variables used to override default properties-->
           <systemPropertyVariables>
 <!--            <browser>chrome</browser>-->
             <selenium.grid.enabled>true</selenium.grid.enabled>
           </systemPropertyVariables>
           <suiteXmlFiles>
-            <file>test-suite.xml</file>
+            <file>src/test/resources/test-suites/vendor-portol.xml</file>
+<!--            <file>src/test/resources/test-suites/flight-reservation.xml</file>-->
           </suiteXmlFiles>
           <threadCount>1</threadCount>
           <reportsDirectory>target/test-output</reportsDirectory>
