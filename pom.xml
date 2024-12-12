@@ -83,7 +83,7 @@
 <!--            <selenium.grid.enabled>true</selenium.grid.enabled>-->
           </systemPropertyVariables>
           <suiteXmlFiles>
-<!--            <file>src/test/resources/test-suites/vendor-portol.xml</file>-->
+            <file>src/test/resources/test-suites/vendor-portol.xml</file>
             <file>src/test/resources/test-suites/flight-reservation.xml</file>
           </suiteXmlFiles>
           <threadCount>1</threadCount>
