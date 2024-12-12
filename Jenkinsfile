@@ -9,13 +9,23 @@ pipeline{
         }
         stage('Build Image'){
             steps{
-                echo "docker build -t=rashmisoundar/selenium ."
+                sh "docker build -t rashmisoundar/selenium:latest ."
             }
         }
         stage('Push Image'){
-            steps{
-                sh "docker push rashmisoundar/selenium ."
+            environment{
+                DOCKER_HUB = credentials('dockerhub-creds')
             }
+            steps{
+                sh 'echo ${DOCKER_HUB_PSW} | docker login -u ${DOCKER_HUB_USR} --password-stdin'
+                sh "docker push rashmisoundar/selenium:latest"
+            }
+        }
+    }
+
+    post{
+        always{
+            sh "docker logout"
         }
     }
 }
